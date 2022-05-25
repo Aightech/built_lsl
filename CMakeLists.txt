@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.3)
 
 ###### LIBRARY NAME AND VERSION ######
 set(LIB_NAME lsl64)
-set(PROJECT_VERSION 2.1)
+set(PROJECT_VERSION 2.2)
 
 if(NOT DEFINED DIR_DEPTH)
   set(DIR_DEPTH 0)
