@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.3)
 
 ###### LIBRARY NAME AND VERSION ######
 set(LIB_NAME lsl64)
-set(PROJECT_VERSION 1.4)
+set(PROJECT_VERSION 2.1)
 
 if(NOT DEFINED DIR_DEPTH)
   set(DIR_DEPTH 0)
@@ -21,7 +21,9 @@ else ()
   set(CMAKE_CXX_STANDARD 11)
   set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+  
   add_library(${LIB_NAME} SHARED IMPORTED GLOBAL)
   set_target_properties( ${LIB_NAME} PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/bin/liblsl64.so" )
+  set_target_properties( ${LIB_NAME} PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_SOURCE_DIR}/include" )
 
 endif ()
