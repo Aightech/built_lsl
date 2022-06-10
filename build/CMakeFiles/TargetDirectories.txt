@@ -1,2 +1,0 @@
-/home/adev/Documents/dev/built_lsl/build/CMakeFiles/rebuild_cache.dir
-/home/adev/Documents/dev/built_lsl/build/CMakeFiles/edit_cache.dir

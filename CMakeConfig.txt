@@ -1,5 +1,5 @@
 set(LIB_NAME lsl64)
-set(PROJECT_VERSION 2.3)
+set(PROJECT_VERSION 2.4)
 
 ###### Special libraries ######
 set(EXTRA_LIBS "")
