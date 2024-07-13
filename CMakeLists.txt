@@ -19,10 +19,18 @@ else ()
   # ###### C++ standard ######
   set(CMAKE_CXX_STANDARD 11)
   set(CMAKE_CXX_STANDARD_REQUIRED True)
-
   
   add_library(${LIB_NAME} SHARED IMPORTED GLOBAL)
-  set_target_properties( ${LIB_NAME} PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/bin/liblsl64.so" )
+  
+  if (UNIX)
+	set_target_properties( ${LIB_NAME} PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/bin/liblsl64.so" )
+  endif (UNIX)
+  
+  if (WIN32)
+	set_target_properties( ${LIB_NAME} PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/bin/liblsl64.dll" )
+	set_target_properties( ${LIB_NAME} PROPERTIES IMPORTED_IMPLIB "${CMAKE_CURRENT_SOURCE_DIR}/bin/liblsl64.dll" )
+  endif (WIN32)
+  
   set_target_properties( ${LIB_NAME} PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_SOURCE_DIR}/include" )
 
 endif ()
