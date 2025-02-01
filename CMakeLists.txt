@@ -1,4 +1,15 @@
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 3.3...3.5)
+###### LIBRARY NAME AND VERSION ######
+include(CMakeConfig.cmake)
+
+if(NOT DEFINED DIR_DEPTH)
+set(DIR_DEPTH 0)
+else ()
+MATH(EXPR DIR_DEPTH "${DIR_DEPTH}+1")
+endif()
+string(REPEAT "\t" ${DIR_DEPTH} PREFIX_MSG)
+MATH(EXPR color_code "${DIR_DEPTH}+33")
+MATH(EXPR color_code2 "${DIR_DEPTH}+34")
 
 #try to find the LSL library
 find_package(LSL HINTS ${LSL_DIR})
@@ -11,21 +22,11 @@ if (LSL_FOUND)
   # set the name of the library to LSL::lsl
   set(LIB_NAME LSL::lsl)
   set_target_properties(${LIB_NAME} PROPERTIES IMPORTED_GLOBAL TRUE)
+  message("${PREFIX_MSG}-- ${ColourBold}${Esc}[${color_code}m${LIB_NAME}${ColourReset}: LSL library found")
 else ()
-  message("LSL library not found. (Install it for an easier use: https://github.com/sccn/liblsl)")
-  message("Trying to us the built LSL library...")
-    
-  ###### LIBRARY NAME AND VERSION ######
-  include(CMakeConfig.txt)
+message("${PREFIX_MSG}-- ${ColourBold}${Esc}[${color_code}m${LIB_NAME}${ColourReset}: LSL library not found. (Install it for an easier use: https://github.com/sccn/liblsl)")
+message("${PREFIX_MSG}-- ${ColourBold}${Esc}[${color_code}m${LIB_NAME}${ColourReset}: Trying to link with built_LSL library...")
 
-  if(NOT DEFINED DIR_DEPTH)
-    set(DIR_DEPTH 0)
-  else ()
-    MATH(EXPR DIR_DEPTH "${DIR_DEPTH}+1")
-  endif()
-  string(REPEAT "\t" ${DIR_DEPTH} PREFIX_MSG)
-  MATH(EXPR color_code "${DIR_DEPTH}+33")
-  MATH(EXPR color_code2 "${DIR_DEPTH}+34")
 
   if (TARGET ${LIB_NAME})
     message("${PREFIX_MSG}-- ${ColourBold}${Esc}[${color_code}m${LIB_NAME}${ColourReset} is already built")
