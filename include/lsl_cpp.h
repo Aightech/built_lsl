@@ -17,7 +17,7 @@
 * To use this library you need to link to either the liblsl32 or liblsl64 shared library that comes with
 * this header. Under Visual Studio the library is linked in automatically.
 */
-
+#include <stdint.h>
 #include <string>
 #include <vector>
 #include <stdexcept>
